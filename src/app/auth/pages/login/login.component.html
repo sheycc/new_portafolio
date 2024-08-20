@@ -1,0 +1,52 @@
+<div class="login__container">
+  <div class="login__card">
+    <form class="login__form" [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <h3>Login</h3>
+
+      <div class="row gtr-uniform">
+        <!-- Break -->
+        <div class="col-12">
+          <span>Email</span>
+          <input type="email"
+                 formControlName="email"
+                 placeholder="Enter email">
+        </div>
+        <span errorMsg
+              [msg]="getErrorMsg('email', myForm)"
+              *ngIf="invalidField('email', initialFormValues, myForm)">
+        </span>
+        <div class="col-12">
+          <span>Password</span>
+          <input type="password"
+                 formControlName="password"
+                 placeholder="Enter password">
+        </div>
+        <span errorMsg
+              [msg]="getErrorMsg('password', myForm)"
+              *ngIf="invalidField('password', initialFormValues, myForm)">
+        </span>
+
+      </div>
+
+      <div class="col-12 submit-container">
+        <ul class="actions">
+          <li><input type="submit" value="Login" [disabled]="myForm.invalid"/></li>
+        </ul>
+      </div>
+      <ul class="actions fit small" *ngIf="invalid">
+        <li>
+          <a class="button fit small icon solid fa-solid fa-circle-xmark" >{{errorMsg}}</a>
+          <i class="fa-solid fa-circle-xmark" (click)="closeErrorMsg()"></i>
+        </li>
+      </ul>
+      
+      <div class="error-container" *ngIf="invalid">
+        <div class="error-message">
+          <p>{{errorMsg}}</p>
+        </div>
+        <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
+      </div>
+    </form>
+
+  </div>
+</div>

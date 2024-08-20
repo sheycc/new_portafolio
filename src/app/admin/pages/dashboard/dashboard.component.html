@@ -1,0 +1,66 @@
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Header -->
+      <app-header></app-header>
+
+      <!-- Banner -->
+      <section id="banner">
+        <div class="content">
+          <h4>Projects</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let project of projects$ | async">
+                <td>{{ project.header }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.tech }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Skills & Subskills</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Item1</td>
+                <td>Ante turpis integer aliquet porttitor.</td>
+                <td>29.99</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <app-footer></app-footer>
+    </div>
+
+  </div>
+
+
+</div>
+
+
