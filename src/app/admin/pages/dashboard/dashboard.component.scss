@@ -20,10 +20,18 @@ table th {
   font-weight: 600;
   padding: 0 0.75em 0.75em 0.75em;
   text-align: left; }
+table td:last-child,
+table th:last-child {
+  text-align: right;
+}
 table thead {
   border-bottom: solid 2px rgba(210, 215, 217, 0.75); }
 table tfoot {
   border-top: solid 2px rgba(210, 215, 217, 0.75); }
+table tfoot tr td a{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;}
 table.alt {
   border-collapse: separate; }
 table.alt tbody tr td {
@@ -38,3 +46,34 @@ table.alt thead {
   border-bottom: 0; }
 table.alt tfoot {
   border-top: 0; }
+
+
+#menu ul {
+  color: #7f888f;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+ul {
+  margin: 0 0 0 0;
+}
+li.li__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .li__a {
+    display: flex;
+  }
+}
+.last__row {
+  display: flex;
+  justify-content: flex-end;
+  i {
+    color: #f56a6a !important;
+  }
+}
+i {
+  font-size: 1.25em;
+}

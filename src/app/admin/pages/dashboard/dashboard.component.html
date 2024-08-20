@@ -19,16 +19,35 @@
               <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Price</th>
+                <th>Actions</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let project of projects$ | async">
                 <td>{{ project.header }}</td>
                 <td>{{ project.description }}</td>
-                <td>{{ project.tech }}</td>
+                <td>
+                  <ul class="icons">
+                    <li><a href='https://www.linkedin.com/in/sheycc/' class="icon">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </a></li>
+                    <li><a href='https://github.com/sheycc' class="icon">
+                      <i class="fa-solid fa-trash"></i>
+                    </a></li>
+                  </ul>
+                </td>
               </tr>
               </tbody>
+              <tfoot>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <a href='https://www.linkedin.com/in/sheycc/' class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </a>
+                </td>
+              </tr>
+              </tfoot>
             </table>
           </div>
 
@@ -38,17 +57,64 @@
               <thead>
               <tr>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Subskills</th>
+                <th>Actions</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Item1</td>
-                <td>Ante turpis integer aliquet porttitor.</td>
-                <td>29.99</td>
+              <tr *ngFor="let skill of skills$ | async">
+                <td>{{skill.name}}</td>
+                <td id="menu">
+                  <ul>
+                    <li>
+                      <span class="opener" (click)="toggleMenu($event)">{{getSubskillsStr(skill.uid)}}</span>
+                      <ul>
+                        <li *ngFor="let subskill of getSubskills(skill.uid)" class="li__row">
+                          {{subskill.name}}
+                          <ul class="li__a">
+                            <li>
+                              <a href='https://www.linkedin.com/in/sheycc/' class="icon">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='https://github.com/sheycc' class="icon">
+                                <i class="fa-solid fa-trash"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <div class="last__row">
+                          <a href='#' class="icon">
+                            <i class="fa-solid fa-plus"></i>
+                          </a>
+                        </div>
+                      </ul>
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="icons">
+                    <li><a href='https://www.linkedin.com/in/sheycc/' class="icon">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </a></li>
+                    <li><a href='https://github.com/sheycc' class="icon">
+                      <i class="fa-solid fa-trash"></i>
+                    </a></li>
+                  </ul>
+                </td>
               </tr>
               </tbody>
+              <tfoot>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <a href='#' class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </a>
+                </td>
+              </tr>
+              </tfoot>
             </table>
           </div>
         </div>

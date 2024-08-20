@@ -14,6 +14,8 @@ import {ProjectsService} from "../../../shared/services/projects.service";
 import {SkillsService} from "../../../shared/services/skills.service";
 import {Project} from "../../../shared/interfaces/project";
 import {Skill} from "../../../shared/interfaces/skill";
+import {Subskill} from "../../../shared/interfaces/subskill";
+import {SubskillsService} from "../../../shared/services/subskills.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -36,14 +38,39 @@ export class DashboardComponent implements OnInit{
 
   projects$: Observable<Project[]> | undefined;
   skills$: Observable<Skill[]> | undefined;
+  subskills: { [key: string]: Subskill[] } = {};
 
   constructor(private projectsService: ProjectsService,
-              private skillsService: SkillsService) {
+              private skillsService: SkillsService,
+              private subskillService: SubskillsService) {
   }
 
   ngOnInit(): void {
     this.projects$ = this.projectsService.getAllProjects();
     this.skills$ = this.skillsService.getAllSkills();
+    this.subskills = this.subskillService.getSubskillsDictionary();
   }
 
+  getSubskillsStr(skill_uid: string) {
+    return this.subskills[skill_uid]?.map(subskill => subskill.name).join(', ') || ''
+  }
+
+  getSubskills(skill_uid: string) {
+    return this.subskills[skill_uid];
+  }
+
+  toggleMenu(event: Event) {
+    const opener = event.target as HTMLElement;
+
+    if (opener.classList.contains('opener')) {
+      opener.classList.toggle('active');
+      const submenu = opener.nextElementSibling as HTMLElement;
+
+      if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+      } else {
+        submenu.style.display = 'block';
+      }
+    }
+  }
 }
