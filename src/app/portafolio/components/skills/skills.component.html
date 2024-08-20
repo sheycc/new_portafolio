@@ -1,0 +1,107 @@
+
+<header class="major">
+  <h2>Skills</h2>
+</header>
+<div class="features">
+  <article *ngFor="let skill of skills$ | async">
+    <span class="icon"><i class="span-icon {{skill.icon}}"></i></span>
+    <div class="content">
+      <h3>{{ skill.name }}</h3>
+      <p-rating [(ngModel)]="skill.rating" [cancel]="false"></p-rating>
+      <p>
+        {{ getSubskillsStr(skill.uid) }}
+      </p>
+    </div>
+  </article>
+
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-nodejs-plain"></i>-->
+<!--    </span>-->
+<!--    <div class="content">-->
+<!--      <h3>Node</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Angular 8+, JavaScript & TypeScript, Node.js, Express, RxJs, NgRx</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-android-plain"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Android</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Flutter & Dart, Ionic & Capacitor</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-python-plain"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Python</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Python, Django, Flask</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon fa-solid fa-coins"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>DataBase</h3>-->
+<!--      <p-rating [(ngModel)]="values[2]" [cancel]="false" />-->
+<!--      <p>MySQL, PostgreSQL, SQLServer, MongoDB, Firebase Database</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-html5-plain"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>HTML & CSS</h3>-->
+<!--      <p-rating [(ngModel)]="values[3]" [cancel]="false" />-->
+<!--      <p>Html5, CSS3, SASS, LESS</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-git-plain"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Version Control</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Git, GitHub</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon devicon-bootstrap-plain"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Design Libraries & Frameworks</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Bootstrap, PrimeNg, Material Design</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon fa-solid fa-tools"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Tools & Libraries</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>ESLint, Prettier, WebComponents - Angular Element - Lit Element, Angular Universal</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon fa-duotone fa-solid fa-flask-vial"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Tests</h3>-->
+<!--      <p-rating [(ngModel)]="values[0]" [cancel]="false" />-->
+<!--      <p>Unit Test & Integration Test, Jasmine & Karma, Jest</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon fa-duotone fa-solid fa-diagram-project"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Architecture & Patterns</h3>-->
+<!--      <p-rating [(ngModel)]="values[4]" [cancel]="false" />-->
+<!--      <p>Micro-front Architecture, MVC Architecture, MVVM Architecture,-->
+<!--        Component-Based Architecture, SPA Rendering Pattern, PWA Rendering Patterns, Redux States Pattern, BEM Styles Pattern</p>-->
+<!--    </div>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <span class="icon"><i class="span-icon fa-solid fa-circle-check"></i></span>-->
+<!--    <div class="content">-->
+<!--      <h3>Good Practices & Methodologies</h3>-->
+<!--      <p-rating [(ngModel)]="values[3]" [cancel]="false" />-->
+<!--      <p>SOLID, KISS, DRY, Web Accessibility, Responsive Design, Handler CORS Error, CSR Methodology, Performance Optimization</p>-->
+<!--    </div>-->
+<!--  </article>-->
+</div>

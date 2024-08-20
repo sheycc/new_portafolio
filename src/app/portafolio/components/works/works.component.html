@@ -1,0 +1,131 @@
+
+<header class="major">
+  <h2>Works</h2>
+</header>
+<div class="posts">
+  <article *ngFor="let project of projects$ | async">
+      <p-galleria
+        [value]="getImages(project.uid)"
+        [showIndicators]="true"
+        [showThumbnails]="false">
+        <ng-template pTemplate="item" let-item>
+          <a href="#" class="image work"><img [src]="item"  alt="" /></a>
+        </ng-template>
+      </p-galleria>
+
+    <h3>{{project.header}}</h3>
+    <p>{{project.description}}</p>
+  </article>
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_2"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>ChopiLand</h3>-->
+<!--    <p>eCommerce para la venta de artículos varios.</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_3"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>mHealthApp</h3>-->
+<!--    <p>Aplicación móvil para el estudio de lesiones\n' +-->
+<!--      'en la piel y software para la depuración de imágenes,\n' +-->
+<!--      'detección y posterior clasificación de lunares.</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_4"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>SubzeroApi</h3>-->
+<!--    <p>Software con autenticación, reportes\n' +-->
+<!--      'y modelación para controlar un sistema de reparto y\n' +-->
+<!--      'almacenamiento de productos congelados.</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_5"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>Encuestador - Notificador</h3>-->
+<!--    <p>Aplicaciones móviles cartográficas, una para\n' +-->
+<!--      'recoger información asociada a propiedades geolocalizables\n' +-->
+<!--      'y otra para notificar que la encuesta a dichas propiedades fue\n' +-->
+<!--      'realizada.</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_6"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>Angular's Modules</h3>-->
+<!--    <p>'Módulo de autenticación con JWT más backend\n' +-->
+<!--      'en Node.js con Express y MongoDB para el registro y login de\n' +-->
+<!--      'usuarios.\n' +-->
+<!--      'Aplicación para la visualización y gestión de mapas usando\n' +-->
+<!--      'MapBox.\n' +-->
+<!--      'Módulo para representar datos mediante gráficas con\n' +-->
+<!--      'NgChartsModule.\n' +-->
+<!--      'Módulos para la búsqueda y gestión de países e imágenes usando\n' +-->
+<!--      'APIs como API Rest Countries y API Giphy respectivamente.\n</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+<!--  <article>-->
+<!--    <p-galleria-->
+<!--      [value]="images_7"-->
+<!--      [showIndicators]="true"-->
+<!--      [showThumbnails]="false">-->
+<!--      <ng-template pTemplate="item" let-item>-->
+<!--        <a href="#" class="image work"><img [src]="item"  alt="" /></a>-->
+<!--      </ng-template>-->
+<!--    </p-galleria>-->
+
+<!--    <h3>Gifty</h3>-->
+<!--    <p>eCommerce para la venta o intercambio de artículos usados, con autenticacion, chats y pasarela de pagos integrados.</p>-->
+<!--    <ul class="actions">-->
+<!--      <li><a href="#" class="button">More</a></li>-->
+<!--    </ul>-->
+<!--  </article>-->
+</div>
+
