@@ -38,6 +38,19 @@ export class SubskillsService {
       );
   }
 
+  getSubskillsDictionary(): { [key: string]: Subskill[] } {
+    let _subskills: { [key: string]: Subskill[] } = {};
+    this.getAllSubskills().subscribe(subskills => {
+      subskills.forEach(subskill => {
+        if (!_subskills[subskill.skill_uid]) {
+          _subskills[subskill.skill_uid] = [];
+        }
+        _subskills[subskill.skill_uid].push(subskill);
+      });
+    });
+    return _subskills;
+  }
+
   getSubskillById(uid: string): Observable<Subskill | undefined> {
     return this.subskillsCollection.doc<Subskill>(uid).valueChanges().pipe(
       catchError((error) => {
