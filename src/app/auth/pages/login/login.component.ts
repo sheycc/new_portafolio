@@ -49,7 +49,7 @@ export class LoginComponent {
           if(response === true){
             this.invalid = false;
             this.errorMsg = '';
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/admin/tabs']);
           } else{
             this.invalid = true;
             this.errorMsg = 'Something went wrong! Try again.';

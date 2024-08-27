@@ -1689,7 +1689,7 @@ button:disabled,
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   position: relative;
-  padding-right: 2.5em;}
+  padding: 0 2.5em 0 0  !important;}
 #menu ul a.opener:before, #menu ul span.opener:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -1780,22 +1780,16 @@ button:disabled,
   }
 }
 .upload--content {
-  padding: 4em 0 0 0;
-  /* Hide the actual file input */
+  padding: 2em 0 0 0;
   input[type="file"] {
-    display: none;
-  }
-  /* Add focus effect */
+    display: none; }
   input[type="file"]:focus {
     border-color: #f56a6a;
-    box-shadow: 0 0 0 1px #f56a6a;
-  }
-  /* Display selected file name */
+    box-shadow: 0 0 0 1px #f56a6a; }
   .custom-file-name {
     display: inline-block;
     margin-left: 0.75em;
     font-weight: 400;
-    color: #f56a6a;
-  }
+    color: #f56a6a; }
 }
 

@@ -1,0 +1,43 @@
+<section id="banner">
+  <div class="content">
+    <h4>Projects</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of projects$ | async">
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>
+            <ul class="icons">
+              <li><a routerLink="../../projects/create-project/edit/{{project.uid}}" class="icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a></li>
+              <li><a (click)="deleteProject(project.uid)" class="icon">
+                <i class="fa-solid fa-trash"></i>
+              </a></li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="2"></td>
+          <td>
+            <a routerLink="../../projects/create-project" class="icon">
+              <i class="fa-solid fa-plus"></i>
+            </a>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+

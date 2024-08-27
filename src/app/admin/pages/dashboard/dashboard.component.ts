@@ -16,9 +16,11 @@ import {Project} from "../../../shared/interfaces/project";
 import {Skill} from "../../../shared/interfaces/skill";
 import {Subskill} from "../../../shared/interfaces/subskill";
 import {SubskillsService} from "../../../shared/services/subskills.service";
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {ResumeComponent} from "../../components/resume/resume.component";
 import {PrimengModule} from "../../../primeng/primeng.module";
+import {ProjectsComponent} from "../projects/projects.component";
+import {SkillsSubskillsComponent} from "../skills-subskills/skills-subskills.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -36,11 +38,28 @@ import {PrimengModule} from "../../../primeng/primeng.module";
     RouterLink,
     RouterOutlet,
     ResumeComponent,
-    PrimengModule
+    PrimengModule,
+    ProjectsComponent,
+    SkillsSubskillsComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  activeIndex: number = 0;
 
+  constructor(private router: Router) {}
+
+  onTabChange(event: any) {
+    switch (event.index) {
+      case 1:
+        this.router.navigate(['admin/tabs/projects/table']);
+        break;
+      case 2:
+        this.router.navigate(['admin/tabs/skills-subskills/table']);
+        break;
+      default:
+        this.router.navigate(['admin/tabs']);
+    }
+  }
 }

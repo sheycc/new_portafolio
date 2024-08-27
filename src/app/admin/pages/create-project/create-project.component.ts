@@ -98,7 +98,7 @@ export class CreateProjectComponent implements OnInit{
           if(response){
             this.invalid = false;
             this.errorMsg = '';
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/admin/tabs/projects/table']);
           } else{
             this.invalid = true;
             this.errorMsg = 'Something went wrong! Try again.';

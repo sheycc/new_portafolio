@@ -9,7 +9,20 @@
       <!-- Header -->
       <app-header></app-header>
 
-      <router-outlet></router-outlet>
+      <div class="card">
+        <p-tabView  [(activeIndex)]="activeIndex" (onChange)="onTabChange($event)">
+          <p-tabPanel header="Resume">
+            <app-resume></app-resume>
+          </p-tabPanel>
+          <p-tabPanel header="Projects">
+          </p-tabPanel>
+          <p-tabPanel header="Skills">
+          </p-tabPanel>
+          <router-outlet></router-outlet>
+        </p-tabView>
+      </div>
+
+
 
       <!-- Footer -->
       <app-footer></app-footer>
