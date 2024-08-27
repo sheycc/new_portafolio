@@ -1,0 +1,53 @@
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <h3>{{ skill.uid ? 'Update ' : 'New '}} Skill</h3>
+
+
+  <div class="row gtr-200">
+    <div class="col-6 col-12-medium">
+      <div class="row gtr-uniform">
+        <div class="col-12">
+          <span>Name</span>
+          <input type="text"
+                 formControlName="name"
+                 placeholder="Enter a skill name">
+          <span errorMsg
+                [msg]="getErrorMsg('name', myForm)"
+                *ngIf="invalidField('name', initialFormValues, myForm)">
+      </span>
+        </div>
+        <div class="col-12">
+          <span>Icon</span>
+          <input type="text"
+                 formControlName="icon"
+                 placeholder="Enter the icon stack">
+          <span errorMsg
+                [msg]="getErrorMsg('icon', myForm)"
+                *ngIf="invalidField('icon', initialFormValues, myForm)">
+        </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-12-medium col-6--flex-center">
+      <div class="rating-container">
+        <span>Rating</span>
+        <p-knob formControlName="rating" [max]="5" valueColor="#f56a6a" rangeColor="#F56A6A26"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-container">
+    <ul class="actions">
+      <li><input type="submit" value="Submit" [disabled]="myForm.invalid"/></li>
+    </ul>
+    <div class="error-container" *ngIf="invalid">
+      <div class="error-message">
+        <p>{{errorMsg}}</p>
+      </div>
+      <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
+    </div>
+  </div>
+
+
+</form>

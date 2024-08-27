@@ -1,6 +1,6 @@
 export interface Project {
-  uid: string;
-  header: string;
+  uid?: string;
+  name: string;
   description: string;
   tech: string;
 }

@@ -1,0 +1,116 @@
+
+
+
+<!-- Resume -->
+<app-resume></app-resume>
+
+<!-- Banner -->
+<section id="banner">
+  <div class="content">
+    <h4>Projects</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of projects$ | async">
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>
+            <ul class="icons">
+              <li><a routerLink="../create-project/edit/{{project.uid}}" class="icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a></li>
+              <li><a (click)="deleteProject(project.uid)" class="icon">
+                <i class="fa-solid fa-trash"></i>
+              </a></li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="2"></td>
+          <td>
+            <a routerLink="../create-project" class="icon">
+              <i class="fa-solid fa-plus"></i>
+            </a>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h4>Skills & Subskills</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Subskills</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let skill of skills$ | async">
+          <td>{{skill.name}}</td>
+          <td id="menu">
+            <ul>
+              <li>
+                <span class="opener" (click)="toggleMenu($event)">{{getSubskillsStr(skill.uid!)}}</span>
+                <ul>
+                  <li *ngFor="let subskill of getSubskills(skill.uid!)" class="li__row">
+                    {{subskill.name}}
+                    <ul class="li__a">
+                      <li>
+                        <a routerLink="../create-subskill/edit/{{subskill.uid}}" class="icon">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a (click)="deleteSubskill(subskill.uid)" class="icon">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <div class="last__row">
+                    <a routerLink="../create-subskill/{{skill.uid}}" class="icon">
+                      <i class="fa-solid fa-plus"></i>
+                    </a>
+                  </div>
+                </ul>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="icons">
+              <li><a routerLink="../create-skill/edit/{{skill.uid}}" class="icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a></li>
+              <li><a (click)="deleteSkill(skill.uid)" class="icon">
+                <i class="fa-solid fa-trash"></i>
+              </a></li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="2"></td>
+          <td>
+            <a routerLink="../create-skill" class="icon">
+              <i class="fa-solid fa-plus"></i>
+            </a>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>

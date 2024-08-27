@@ -1,0 +1,33 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <h3>{{ subskill.uid ? 'Update ' : 'New '}} Subskill</h3>
+
+  <div class="row gtr-uniform">
+    <!-- Break -->
+    <div class="col-6">
+      <span>Name</span>
+      <input type="text"
+             formControlName="name"
+             placeholder="Enter a subskill name">
+      <span errorMsg
+            [msg]="getErrorMsg('name', myForm)"
+            *ngIf="invalidField('name', initialFormValues, myForm)">
+        </span>
+    </div>
+
+
+  </div>
+
+  <div class="col-12 submit-container">
+    <ul class="actions">
+      <li><input type="submit" value="Submit" [disabled]="myForm.invalid"/></li>
+    </ul>
+    <div class="error-container" *ngIf="invalid">
+      <div class="error-message">
+        <p>{{errorMsg}}</p>
+      </div>
+      <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
+    </div>
+  </div>
+
+
+</form>

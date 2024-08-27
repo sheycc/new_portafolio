@@ -1,5 +1,5 @@
 export interface Skill {
-  uid: string;
+  uid?: string;
   name: string;
   rating: number;
   icon: string;

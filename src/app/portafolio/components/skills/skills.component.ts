@@ -6,6 +6,7 @@ import {Skill} from "../../../shared/interfaces/skill";
 import {Subskill} from "../../../shared/interfaces/subskill";
 import {SkillsService} from "../../../shared/services/skills.service";
 import {SubskillsService} from "../../../shared/services/subskills.service";
+import {response} from "express";
 
 
 
@@ -42,7 +43,9 @@ export class SkillsComponent implements OnInit{
     //     this.subskills[subskill.skill_uid].push(subskill);
     //   });
     // });
-    this.subskills = this.subskillService.getSubskillsDictionary();
+    this.subskillService.getSubskillsDictionary().subscribe(response => {
+      this.subskills = response;
+    });
   }
 
   getSubskillsStr(skill_uid: string) {

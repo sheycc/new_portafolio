@@ -16,6 +16,9 @@ import {Project} from "../../../shared/interfaces/project";
 import {Skill} from "../../../shared/interfaces/skill";
 import {Subskill} from "../../../shared/interfaces/subskill";
 import {SubskillsService} from "../../../shared/services/subskills.service";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {ResumeComponent} from "../../components/resume/resume.component";
+import {PrimengModule} from "../../../primeng/primeng.module";
 
 @Component({
   selector: 'app-dashboard',
@@ -30,47 +33,14 @@ import {SubskillsService} from "../../../shared/services/subskills.service";
     SidebarComponent,
     SkillsComponent,
     WorksComponent,
+    RouterLink,
+    RouterOutlet,
+    ResumeComponent,
+    PrimengModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent {
 
-  projects$: Observable<Project[]> | undefined;
-  skills$: Observable<Skill[]> | undefined;
-  subskills: { [key: string]: Subskill[] } = {};
-
-  constructor(private projectsService: ProjectsService,
-              private skillsService: SkillsService,
-              private subskillService: SubskillsService) {
-  }
-
-  ngOnInit(): void {
-    this.projects$ = this.projectsService.getAllProjects();
-    this.skills$ = this.skillsService.getAllSkills();
-    this.subskills = this.subskillService.getSubskillsDictionary();
-  }
-
-  getSubskillsStr(skill_uid: string) {
-    return this.subskills[skill_uid]?.map(subskill => subskill.name).join(', ') || ''
-  }
-
-  getSubskills(skill_uid: string) {
-    return this.subskills[skill_uid];
-  }
-
-  toggleMenu(event: Event) {
-    const opener = event.target as HTMLElement;
-
-    if (opener.classList.contains('opener')) {
-      opener.classList.toggle('active');
-      const submenu = opener.nextElementSibling as HTMLElement;
-
-      if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-      } else {
-        submenu.style.display = 'block';
-      }
-    }
-  }
 }

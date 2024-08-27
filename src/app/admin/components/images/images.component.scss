@@ -1,0 +1,25 @@
+::ng-deep{
+  .p-galleria {
+    ul{
+      list-style: none !important;
+      margin: 0 0 1em 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+}
+.upload--content {
+  padding: 0 !important;
+}
+.upload--content .image-uploaded {
+  position: relative;
+  display: block;
+  overflow: hidden;}
+.upload--content .image-uploaded img {
+  display: block;
+  border-radius: 0.375em;
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 0 2em 0;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 16 / 9; }

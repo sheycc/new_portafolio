@@ -85,6 +85,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after, body.is-re
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -281,6 +282,11 @@ hr.major {
   margin-left: 41.66667%; }
 .row > .col-6 {
   width: 50%; }
+.col-6--flex-center {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5em !important;
+}
 .row > .off-6 {
   margin-left: 50%; }
 .row > .col-7 {
@@ -659,6 +665,11 @@ hr.major {
     margin-left: 41.66667%; }
   .row > .col-6-medium {
     width: 50%; }
+  .col-6-images--flex-center {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5em !important;
+  }
   .row > .off-6-medium {
     margin-left: 50%; }
   .row > .col-7-medium {
@@ -1015,7 +1026,7 @@ header.main > :last-child {
 
 /* Form */
 form {
-  margin: 0 0 2em 0; }
+  margin: 2em 0; }
 
 label {
   color: #3d4449;
@@ -1677,7 +1688,8 @@ button:disabled,
   transition: color 0.2s ease-in-out;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  position: relative; }
+  position: relative;
+  padding-right: 2.5em;}
 #menu ul a.opener:before, #menu ul span.opener:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -1726,3 +1738,64 @@ button:disabled,
   border-top: 0;
   margin-top: 0;
   padding-top: 0; }
+
+
+//Utils
+.submit-container {
+  display: flex;
+  justify-content: center;
+  padding: 2em 0 0 0;
+  align-items: center;
+  flex-direction: column;
+  ul {
+    margin: 0 !important;
+    li {
+      padding: 0 !important;
+    }
+  }
+}
+.error-container {
+  display: flex;
+  align-items: center;
+  border-radius: 0.375em;
+  box-shadow: inset 0 0 0 2px #f56a6a;
+  //height: 2.5em;
+  padding: 1.25em;
+  margin: 0.5em;
+  background-color: rgba(245, 106, 106, 0.15);
+  flex-wrap: wrap;
+  .error-message {
+    flex: 1;
+    text-align: left;
+    p {
+      margin: 0 !important;
+      word-wrap: break-word;
+      font-size: 1em;
+    }
+  }
+  .close-icon {
+    display: flex;
+    cursor: pointer;
+    margin: 0.5em;
+  }
+}
+.upload--content {
+  padding: 4em 0 0 0;
+  /* Hide the actual file input */
+  input[type="file"] {
+    display: none;
+  }
+  /* Add focus effect */
+  input[type="file"]:focus {
+    border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a;
+  }
+  /* Display selected file name */
+  .custom-file-name {
+    display: inline-block;
+    margin-left: 0.75em;
+    font-weight: 400;
+    color: #f56a6a;
+  }
+}
+
