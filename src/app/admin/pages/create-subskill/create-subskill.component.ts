@@ -74,7 +74,7 @@ export class CreateSubskillComponent {
             if(response){
               this.invalid = false;
               this.errorMsg = '';
-              this.router.navigate(['/admin']);
+              this.router.navigate(['/admin/tabs/skills-subskills/table']);
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';
@@ -88,7 +88,7 @@ export class CreateSubskillComponent {
             if(response){
               this.invalid = false;
               this.errorMsg = '';
-              this.router.navigate(['/admin']);
+              this.router.navigate(['/admin/tabs/skills-subskills/table']);
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';

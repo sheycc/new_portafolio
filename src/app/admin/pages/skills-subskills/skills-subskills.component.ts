@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AsyncPipe, NgForOf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {ResumeComponent} from "../../components/resume/resume.component";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {Observable} from "rxjs";
 import {Project} from "../../../shared/interfaces/project";
 import {Skill} from "../../../shared/interfaces/skill";
@@ -8,30 +9,27 @@ import {Subskill} from "../../../shared/interfaces/subskill";
 import {ProjectsService} from "../../../shared/services/projects.service";
 import {SkillsService} from "../../../shared/services/skills.service";
 import {SubskillsService} from "../../../shared/services/subskills.service";
-import {ResumeComponent} from "../../components/resume/resume.component";
 import {PrimengModule} from "../../../primeng/primeng.module";
 
 @Component({
-  selector: 'app-tables',
+  selector: 'app-skills-subskills',
   standalone: true,
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        RouterLink,
-        ResumeComponent,
-        PrimengModule
-    ],
-  templateUrl: './tables.component.html',
-  styleUrl: './tables.component.scss'
+  imports: [
+    AsyncPipe,
+    NgForOf,
+    RouterLink,
+    PrimengModule,
+    RouterOutlet
+  ],
+  templateUrl: './skills-subskills.component.html',
+  styleUrl: './skills-subskills.component.scss'
 })
-export class TablesComponent implements OnInit {
+export class SkillsSubskillsComponent implements OnInit{
 
-  projects$: Observable<Project[]> | undefined;
   skills$: Observable<Skill[]> | undefined;
   subskills: { [key: string]: Subskill[] } = {};
 
-  constructor(private projectsService: ProjectsService,
-              private skillsService: SkillsService,
+  constructor(private skillsService: SkillsService,
               private subskillService: SubskillsService) {
   }
 
@@ -40,11 +38,7 @@ export class TablesComponent implements OnInit {
   }
 
   private loadData(): void {
-    // Limpiar o reinicializar el diccionario de subskills
     this.subskills = {};
-
-    // Obtener los proyectos, habilidades y subhabilidades más recientes
-    this.projects$ = this.projectsService.getAllProjects();
     this.skills$ = this.skillsService.getAllSkills();
     this.subskillService.getSubskillsDictionary().subscribe(response => {
       this.subskills = response;
@@ -74,11 +68,6 @@ export class TablesComponent implements OnInit {
     }
   }
 
-  deleteProject(uid: string | undefined) {
-    if(uid) {
-      this.projectsService.deleteProject(uid).subscribe();
-    }
-  }
   deleteSkill(uid: string | undefined) {
     if(uid) {
       this.skillsService.deleteSkill(uid).subscribe(
