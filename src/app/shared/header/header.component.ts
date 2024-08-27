@@ -18,7 +18,6 @@ export class HeaderComponent {
   constructor(private auth: AuthService) {  }
 
   isAdmin() {
-    console.log(this.auth.user.uid)
     return this.auth.user.uid;
   }
 

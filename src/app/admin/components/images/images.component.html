@@ -1,0 +1,20 @@
+<div class="upload--content">
+  <h4>Upload Images</h4>
+  <div class="input--container">
+    <label for="file-upload" class="button icon solid fa-upload">
+      Choose files
+    </label>
+    <input id="file-upload" type="file" (change)="uploadFiles($event)" multiple>
+    <span class="custom-file-name">{{ fileName }}</span>
+  </div>
+  <div class="image-uploaded" *ngIf="images.length">
+    <p-galleria
+      [value]="images"
+      [showIndicators]="true"
+      [showThumbnails]="false">
+      <ng-template pTemplate="item" let-item let-i="index">
+        <img [src]="item" alt="" />
+      </ng-template>
+    </p-galleria>
+  </div>
+</div>

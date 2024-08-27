@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { catchError, map } from "rxjs/operators";
-import { from, Observable, of } from "rxjs";
+import {forkJoin, from, Observable, of, switchMap} from "rxjs";
 
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
 
 import { Skill } from "../interfaces/skill";
+import {Subskill} from "../interfaces/subskill";
+import {SubskillsService} from "./subskills.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,13 @@ import { Skill } from "../interfaces/skill";
 export class SkillsService {
 
   private readonly skillsCollection!: AngularFirestoreCollection<Skill>;
+  private readonly subskillsCollection!: AngularFirestoreCollection<Subskill>;
 
-  public skills: Skill[] = [];
+  // public skills: Skill[] = [];
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private subskillsService: SubskillsService) {
     this.skillsCollection = this.afs.collection<Skill>('skills');
+    this.subskillsCollection = this.afs.collection<Subskill>('subskills');
   }
 
   getAllSkills(): Observable<Skill[]> {
@@ -71,13 +75,23 @@ export class SkillsService {
     );
   }
 
-
   deleteSkill(uid: string): Observable<void> {
+    //TODO Mejorar
+    this.subskillsService.getAllSubskillsBySkill(uid).subscribe(subskills => {
+      subskills.forEach(subskill => {
+        from(this.subskillsCollection.doc(subskill.uid).delete()).pipe(
+          catchError((error) => {
+            throw error;
+          })
+        );
+      });
+    });
     return from(this.skillsCollection.doc(uid).delete()).pipe(
       catchError((error) => {
         throw error;
       })
     );
+
   }
 
 }

@@ -2,7 +2,7 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import { HeaderComponent } from "../../../shared/header/header.component";
 import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 import { FooterComponent } from "../../../shared/footer/footer.component";
-import { ResumeService } from "../../services/resume.service";
+import { ResumeService } from "../../../shared/services/resume.service";
 import { PrimengModule } from "../../../primeng/primeng.module";
 import {AboutMeComponent} from "../../components/about-me/about-me.component";
 import {SkillsComponent} from "../../components/skills/skills.component";

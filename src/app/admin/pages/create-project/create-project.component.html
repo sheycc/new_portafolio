@@ -1,0 +1,74 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <h3>{{ project.uid ? 'Update ' : 'New '}} Project</h3>
+
+  <div class="row gtr-200">
+    <div class="col-6 col-12-medium">
+      <div class="row gtr-uniform">
+        <!-- Break -->
+        <div class="col-6">
+          <span>Name</span>
+          <input type="text"
+                 formControlName="name"
+                 placeholder="Enter a project name">
+          <span errorMsg
+                [msg]="getErrorMsg('name', myForm)"
+                *ngIf="invalidField('name', initialFormValues, myForm)">
+          </span>
+        </div>
+
+        <div class="col-6">
+          <span>Tech</span>
+          <input type="text"
+                 formControlName="tech"
+                 placeholder="Enter the tech stack">
+          <span errorMsg
+                [msg]="getErrorMsg('tech', myForm)"
+                *ngIf="invalidField('tech', initialFormValues, myForm)">
+          </span>
+        </div>
+
+        <div class="col-12">
+          <span>Description</span>
+          <textarea type="text"
+                    formControlName="description"
+                    placeholder="Enter a description">
+          </textarea>
+          <span errorMsg
+                [msg]="getErrorMsg('description', myForm)"
+                *ngIf="invalidField('description', initialFormValues, myForm)">
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-12-medium col-6-images--flex-center" *ngIf="project.uid;else createProjectID">
+      <app-images [project_uid]="project.uid"></app-images>
+    </div>
+  </div>
+
+  <ng-template #createProjectID>
+    <ul class="actions button--flex-center">
+      <li><input type="submit" value="Create Project ID" (click)="createProject()" [disabled]="myForm.invalid"/></li>
+    </ul>
+    <div class="error-container" *ngIf="invalid">
+      <div class="error-message">
+        <p>{{errorMsg}}</p>
+      </div>
+      <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
+    </div>
+  </ng-template>
+
+  <div class="col-12 submit-container">
+    <ul class="actions">
+      <li><input type="submit" value="Submit" [disabled]="myForm.invalid || !setID"/></li>
+    </ul>
+    <div class="error-container" *ngIf="invalid">
+      <div class="error-message">
+        <p>{{errorMsg}}</p>
+      </div>
+      <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
+    </div>
+  </div>
+
+
+</form>

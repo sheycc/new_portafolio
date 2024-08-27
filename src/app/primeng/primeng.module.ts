@@ -6,6 +6,8 @@ import { ToastModule } from "primeng/toast";
 import { RatingModule } from 'primeng/rating';
 import { GalleriaModule } from 'primeng/galleria';
 import { CardModule } from 'primeng/card';
+import { KnobModule } from 'primeng/knob';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [],
@@ -16,14 +18,18 @@ import { CardModule } from 'primeng/card';
     ToastModule,
     RatingModule,
     GalleriaModule,
-    CardModule
+    CardModule,
+    KnobModule,
+    TabViewModule
   ],
   exports: [
     MessagesModule,
     ToastModule,
     RatingModule,
     GalleriaModule,
-    CardModule
+    CardModule,
+    KnobModule,
+    TabViewModule
   ]
 })
 export class PrimengModule { }

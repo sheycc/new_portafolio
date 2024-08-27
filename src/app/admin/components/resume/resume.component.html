@@ -1,0 +1,13 @@
+
+<div class="upload--content">
+  <h4>Upload New Resume</h4>
+  <div class="input--container">
+    <label for="file-upload" class="button icon solid fa-upload">
+      Choose file
+    </label>
+    <input id="file-upload" type="file" (change)="uploadFile($event)">
+    <span class="custom-file-name">{{ fileName }}</span>
+  </div>
+</div>
+
+

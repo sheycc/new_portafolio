@@ -9,7 +9,7 @@
       <h3>{{ skill.name }}</h3>
       <p-rating [(ngModel)]="skill.rating" [cancel]="false"></p-rating>
       <p>
-        {{ getSubskillsStr(skill.uid) }}
+        {{ getSubskillsStr(skill.uid!) }}
       </p>
     </div>
   </article>

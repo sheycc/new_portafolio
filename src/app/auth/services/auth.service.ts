@@ -70,15 +70,13 @@ export class AuthService {
 
   login(email: string, password: string): Observable<boolean> {
     const auth = getAuth();
-    console.log('auth', auth)
     return new Observable<boolean>((observer) => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           if (user) {
-            console.log('user', user);
             const userRef = doc(getFirestore(), 'users', user.uid);
-            console.log('userRef', userRef);
+
             getDoc(userRef)
               .then((docSnapshot) => {
                 if (docSnapshot.exists()) {
@@ -127,7 +125,7 @@ export class AuthService {
   getUserById(uid: string): Observable<User> {
     const firestore = getFirestore();
     const userRef = doc(firestore, 'users', uid);
-    console.log('userRef', userRef)
+
     return from(getDoc(userRef)).pipe(
       map((docSnap) => {
         if (docSnap.exists()) {

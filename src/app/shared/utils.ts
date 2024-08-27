@@ -12,7 +12,6 @@ export function invalidField(field: string, initialFormValues: any, form: FormGr
 export function getErrorMsg(field: string, form: FormGroup) {
   const error = form.get(field)?.errors;
   const str = field.charAt(0).toUpperCase() + field.slice(1);
-  console.log(error)
 
   if(error?.['required']) {
     return `${str} required.`;
@@ -28,4 +27,9 @@ export function getErrorMsg(field: string, form: FormGroup) {
     return str + 'error.';
   }
   return '';
+}
+
+export function getFileName(originalString: string) {
+  const index = originalString.indexOf('/');
+  return index !== -1 ? originalString.slice(index + 1) : '';
 }

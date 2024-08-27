@@ -26,18 +26,17 @@ export class ProjectsService {
 
 
   getProjectById(uid: string): Observable<Project | undefined> {
-    return this.projectsCollection.doc<Project>(uid).valueChanges().pipe(
-      catchError((error) => {
-        return of(undefined);
-      })
-    );
+    return this.projectsCollection.valueChanges()
+      .pipe(
+        map(projects => projects.find(project => project.uid === uid))
+      );
   }
 
   createProject(projectRequest: Project): Observable<Project | null> {
     const projectId = this.afs.createId();
     const _project: Project = {
       uid: projectId,
-      header: projectRequest.header,
+      name: projectRequest.name,
       description: projectRequest.description,
       tech: projectRequest.tech
     };
@@ -52,7 +51,7 @@ export class ProjectsService {
 
   updateProject(projectRequest: Project): Observable<Project | null> {
     const _project: Partial<Project> = {
-      header: projectRequest.header,
+      name: projectRequest.name,
       description: projectRequest.description,
       tech: projectRequest.tech
     };
