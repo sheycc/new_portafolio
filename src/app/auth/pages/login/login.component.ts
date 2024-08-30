@@ -30,11 +30,9 @@ export class LoginComponent {
   initialFormValues: any;
   emailRegExp: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
-  // message: Message[] = [];
-
   myForm: FormGroup = this.fb.group({
-    email: ['test@test.com', [Validators.required, Validators.pattern(this.emailRegExp)]],
-    password: ['password', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.pattern(this.emailRegExp)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   })
 
   constructor(
@@ -53,7 +51,6 @@ export class LoginComponent {
           } else{
             this.invalid = true;
             this.errorMsg = 'Something went wrong! Try again.';
-            // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
           }
         });
     }

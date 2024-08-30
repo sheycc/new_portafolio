@@ -46,8 +46,8 @@ import {SkillsSubskillsComponent} from "../skills-subskills/skills-subskills.com
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  activeIndex: number = 0;
 
+  activeIndex: number = 0;
   constructor(private router: Router) {}
 
   onTabChange(event: any) {
