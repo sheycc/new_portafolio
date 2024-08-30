@@ -1,18 +1,20 @@
-import {Injectable} from '@angular/core';
-import {finalize, Observable} from "rxjs";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {getDownloadURL, getStorage, ref} from "@angular/fire/storage";
+import { Injectable } from '@angular/core';
+import { finalize, Observable } from "rxjs";
+import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { getDownloadURL, getStorage, ref } from "@angular/fire/storage";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImagesService {
 
-  byDefaultImage: string = `images/work_default.jpg`;
+  // byDefaultImage: string = `images/work_default.jpg`;
 
   constructor(private storage: AngularFireStorage) { }
 
   async uploadFile(file: File, project_uid: string) {
+    console.log('in upload')
     const filePath = `images/${project_uid}/${file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
@@ -22,6 +24,7 @@ export class ImagesService {
         finalize(() => {
           fileRef.getDownloadURL().subscribe(
             (url) => {
+              console.log(url, 'url')
               resolve(url);  // Resuelve la promesa cuando la carga termina
             },
             (error) => {
@@ -34,11 +37,11 @@ export class ImagesService {
     });
   }
 
-  async getDefault() {
-    const storage = getStorage();
-    const starsRef = ref(storage, this.byDefaultImage);
-    return await getDownloadURL(starsRef)
-  }
+  // async getDefault() {
+  //   const storage = getStorage();
+  //   const starsRef = ref(storage, this.byDefaultImage);
+  //   return await getDownloadURL(starsRef)
+  // }
 
   async getImages(uid: string): Promise<string[]> {
     return new Promise((resolve, reject) => {
@@ -53,46 +56,61 @@ export class ImagesService {
     });
   }
 
-
   downloadImages(project_uid?: string): Observable<string[]> {
     return new Observable<string[]>(observer => {
-      if (!project_uid) {
-        // Si no se proporciona project_uid, obtenemos la URL de la imagen por defecto
-        this.storage.ref(this.byDefaultImage).getDownloadURL().toPromise().then(defaultUrl => {
-          observer.next([defaultUrl]);
-          observer.complete();
-        }).catch(error => {
-          observer.error(error);
-        });
-      } else {
+      if (project_uid) {
         const path = `images/${project_uid}/`;
         const ref = this.storage.ref(path);
 
         ref.listAll().toPromise().then(result => {
-          const imageUrls: { name: string, url: string }[] = [];
-          const downloadUrlPromises = result!.items.map(item =>
-            item.getDownloadURL().then(url => {
-              // Extract the file name and URL
-              const fileName = item.name;
-              imageUrls.push({ name: fileName, url: url });
-            })
-          );
-          Promise.all(downloadUrlPromises).then(() => {
-            // Sort the URLs by file name
-            imageUrls.sort((a, b) => {
-              const numA = parseInt(a.name.split('.')[0], 10);
-              const numB = parseInt(b.name.split('.')[0], 10);
-              return numA - numB;
+          // Filtramos solo los items que están bajo la ruta específica
+          const filteredItems = result!.items.filter(item => item.fullPath.startsWith(path));
+
+          if (filteredItems.length > 0) {
+            const imageUrls: { name: string, url: string }[] = [];
+            const downloadUrlPromises = filteredItems.map(item =>
+              item.getDownloadURL().then(url => {
+                // Extraemos el nombre del archivo y la URL
+                const fileName = item.name;
+                imageUrls.push({ name: fileName, url: url });
+              })
+            );
+
+            Promise.all(downloadUrlPromises).then(() => {
+              // Ordenamos las URLs por nombre de archivo
+              imageUrls.sort((a, b) => {
+                const numA = parseInt(a.name.split('.')[0], 10);
+                const numB = parseInt(b.name.split('.')[0], 10);
+                return numA - numB;
+              });
+
+              // Extraemos las URLs ordenadas
+              const sortedUrls = imageUrls.map(item => item.url);
+              observer.next(sortedUrls);
+              observer.complete();
+            }).catch(error => {
+              observer.error(error);
             });
-            // Extract sorted URLs
-            const sortedUrls = imageUrls.map(item => item.url);
-            observer.next(sortedUrls);
-            observer.complete();
-          });
+          } else {
+            this.storage.ref('images/work_default.jpg').getDownloadURL().toPromise().then(defaultUrl => {
+              observer.next([defaultUrl]);
+              observer.complete();
+            }).catch(error => {
+              observer.error(error);
+            });
+          }
+        }).catch(error => {
+          observer.error(error);
+        });
+      } else {
+        this.storage.ref('images/work_default.jpg').getDownloadURL().toPromise().then(defaultUrl => {
+          observer.next([defaultUrl]);
+          observer.complete();
         }).catch(error => {
           observer.error(error);
         });
       }
     });
   }
+
 }

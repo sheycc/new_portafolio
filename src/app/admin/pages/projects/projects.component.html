@@ -19,7 +19,25 @@
               <li><a routerLink="../../projects/create-project/edit/{{project.uid}}" class="icon">
                 <i class="fa-solid fa-pen-to-square"></i>
               </a></li>
-              <li><a (click)="deleteProject(project.uid)" class="icon">
+              <p-toast
+                position="center"
+                [baseZIndex]="5000">
+                <ng-template let-message pTemplate="message">
+                  <div class="flex flex-column align-items-start message">
+                    <div class="flex align-items-center gap-2 message-summary">
+                      {{ message.summary }}
+                    </div>
+                    <div class="message-detail">
+                      {{ message.detail }}
+                    </div>
+                    <ul class="actions">
+                      <li><input class="button primary small" value="Delete" (click)="accept()"/></li>
+                      <li><input class="button small" value="Cancel" (click)="reject()"/></li>
+                    </ul>
+                  </div>
+                </ng-template>
+              </p-toast>
+              <li><a (click)="deleteProject(project.uid!)" class="icon action">
                 <i class="fa-solid fa-trash"></i>
               </a></li>
             </ul>

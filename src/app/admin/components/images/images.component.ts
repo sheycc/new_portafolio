@@ -28,13 +28,15 @@ export class ImagesComponent {
   constructor(private imagesService: ImagesService) {}
 
   uploadFiles(event: any) {
+    console.log(event, 'in')
     const files: FileList = event.target.files;
     this.fileName = `${files.length} files selected. Uploading...`;
-
+    console.log(this.fileName, files, 'this.fileName')
     const uploadPromises = Array.from(files).map((file: File) => {
       return this.imagesService.uploadFile(file, this.project_uid);
     });
 
+    console.log(uploadPromises.length, 'promises')
     Promise.all(uploadPromises).then(imagesURLs => {
       this.fileName = `${files.length} files uploaded successfully.`;
       this.images = imagesURLs.filter(url => url !== null) as string[]; // Filtra nulos y almacena URLs válidas

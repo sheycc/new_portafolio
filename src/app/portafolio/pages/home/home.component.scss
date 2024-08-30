@@ -1,0 +1,31 @@
+
+/* Toast Message */
+::ng-deep {
+  .p-toast-message-content {
+    background-color: #f0fdf5 !important;
+    border: solid 0.02em #42e78a5e;
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    button {
+      color: #208120 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+      padding: 0 !important; }
+    button.p-link {
+      height: 3em;
+      width: 3em; }
+    button.p-link:hover,
+    button.p-link:active{
+      background-color: transparent; }}
+  .p-toast-summary {
+    color: #208120;
+    font-size: medium; }
+  .p-toast-detail {
+    font-size: small; }
+  .p-toast-message-icon {
+    color: #208120; }
+}

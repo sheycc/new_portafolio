@@ -8,6 +8,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CardModule } from 'primeng/card';
 import { KnobModule } from 'primeng/knob';
 import { TabViewModule } from 'primeng/tabview';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,9 @@ import { TabViewModule } from 'primeng/tabview';
     GalleriaModule,
     CardModule,
     KnobModule,
-    TabViewModule
+    TabViewModule,
+    ConfirmPopupModule,
+    ChartModule
   ],
   exports: [
     MessagesModule,
@@ -29,7 +33,9 @@ import { TabViewModule } from 'primeng/tabview';
     GalleriaModule,
     CardModule,
     KnobModule,
-    TabViewModule
+    TabViewModule,
+    ConfirmPopupModule,
+    ChartModule
   ]
 })
 export class PrimengModule { }
