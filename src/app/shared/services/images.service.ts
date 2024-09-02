@@ -9,12 +9,9 @@ import { getDownloadURL, getStorage, ref } from "@angular/fire/storage";
 })
 export class ImagesService {
 
-  // byDefaultImage: string = `images/work_default.jpg`;
-
   constructor(private storage: AngularFireStorage) { }
 
   async uploadFile(file: File, project_uid: string) {
-    console.log('in upload')
     const filePath = `images/${project_uid}/${file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
@@ -24,7 +21,6 @@ export class ImagesService {
         finalize(() => {
           fileRef.getDownloadURL().subscribe(
             (url) => {
-              console.log(url, 'url')
               resolve(url);  // Resuelve la promesa cuando la carga termina
             },
             (error) => {
@@ -37,11 +33,11 @@ export class ImagesService {
     });
   }
 
-  // async getDefault() {
-  //   const storage = getStorage();
-  //   const starsRef = ref(storage, this.byDefaultImage);
-  //   return await getDownloadURL(starsRef)
-  // }
+  async getHomeImage() {
+    const storage = getStorage();
+    const starsRef = ref(storage, 'images/home.png');
+    return await getDownloadURL(starsRef)
+  }
 
   async getImages(uid: string): Promise<string[]> {
     return new Promise((resolve, reject) => {
