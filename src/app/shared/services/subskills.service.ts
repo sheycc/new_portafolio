@@ -56,17 +56,6 @@ export class SubskillsService {
   //   return _subskills;
   // }
   getSubskillsDictionary(): Observable<{ [key: string]: Subskill[] }> {
-    // let _subskillsDict: { [key: string]: Subskill[] } = {};
-    // let _subskills: Subskill[] = [];
-    // this.getAllSubskills().subscribe(response => _subskills = response);
-    // _subskills.forEach(subskill => {
-    //   if (!_subskillsDict[subskill.skill_uid]) {
-    //     _subskillsDict[subskill.skill_uid] = [];
-    //   }
-    //   _subskillsDict[subskill.skill_uid].push(subskill);
-    // });
-    // console.log('howmanytime')
-    // return _subskillsDict;
     return this.getAllSubskills().pipe(
       map(subskills => {
         let _subskills: { [key: string]: Subskill[] } = {};
@@ -76,7 +65,6 @@ export class SubskillsService {
           }
           _subskills[subskill.skill_uid].push(subskill);
         });
-        // console.log('howmanytime')
         return _subskills; // Retorna el diccionario de subskills
       }),
       catchError(error => {

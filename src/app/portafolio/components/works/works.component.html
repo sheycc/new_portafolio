@@ -2,8 +2,8 @@
 <header class="major">
   <h2>Works</h2>
 </header>
-<div class="posts">
-  <article *ngFor="let project of projects$ | async">
+<div class="posts" *ngIf="projects">
+  <article *ngFor="let project of projects">
     <div class="image-container">
       <p-galleria
         [value]="getImages(project.uid!)"

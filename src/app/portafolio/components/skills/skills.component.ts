@@ -33,16 +33,7 @@ export class SkillsComponent implements OnInit{
   ngOnInit() {
     // Obtener todos los skills
     this.skills$ = this.skillService.getAllSkills();
-
-    // Obtener todos los subskills y organizarlos por skill_uid
-    // this.subskillService.getAllSubskills().subscribe(subskills => {
-    //   subskills.forEach(subskill => {
-    //     if (!this.subskills[subskill.skill_uid]) {
-    //       this.subskills[subskill.skill_uid] = [];
-    //     }
-    //     this.subskills[subskill.skill_uid].push(subskill);
-    //   });
-    // });
+    // Obtener todos los subskills
     this.subskillService.getSubskillsDictionary().subscribe(response => {
       this.subskills = response;
     });
