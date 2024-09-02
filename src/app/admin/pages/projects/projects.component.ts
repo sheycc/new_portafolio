@@ -41,7 +41,6 @@ export class ProjectsComponent implements OnInit{
   }
 
   accept() {
-    console.log('accept id', this.deleted_uid)
     this.projectsService.deleteProject(this.deleted_uid).subscribe();
     this.clearMessageService();
   }

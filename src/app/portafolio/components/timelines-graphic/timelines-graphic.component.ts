@@ -19,11 +19,11 @@ export class TimelinesGraphicComponent {
   ngOnInit() {
 
     this.data = {
-      labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', 'Act.'],
+      labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
       datasets: [
         {
           label: 'School Time',
-          data: [4, 12, 12, 12, 12, 12, 6, 0, 0, 0],
+          data: [4, 10, 10, 10, 10, 10, 8, 0, 0, 0],
           fill: true,
           backgroundColor: 'rgba(253,52,107,0.36)',
           borderColor: '#fd346b',
@@ -32,7 +32,7 @@ export class TimelinesGraphicComponent {
         },
         {
           label: 'Internship Time',
-          data: [0, 0, 0, 0, 4, 12, 12, 0, 0, 0],
+          data: [0, 0, 0, 0, 4, 10, 10, 0, 0, 0],
           fill: true,
           backgroundColor: 'rgba(240,246,59,0.37)',
           borderColor: '#ffe06d',
@@ -41,7 +41,7 @@ export class TimelinesGraphicComponent {
         },
         {
           label: 'WorkTime',
-          data: [0, 0, 0, 0, 0, 0, 0, 12, 12, 8],
+          data: [0, 0, 0, 0, 0, 0, 0, 12, 8, 0],
           fill: true,
           backgroundColor: 'rgba(68,213,244,0.35)',
           borderColor: '#44d5f4',
@@ -57,7 +57,7 @@ export class TimelinesGraphicComponent {
       plugins: {
         title: {
           display: true,
-          text: 'Distribution of Time: Study, Internship, and Work (2016 - Act.)',
+          text: 'Distribution of Time: Study, Internship, and Work (2016 - 2025)',
           color: '#7e8081',
           font: {
             size: 18
@@ -74,7 +74,7 @@ export class TimelinesGraphicComponent {
           callbacks: {
             label: (context: any) => {
               const label = context.dataset.label || '';
-              const value = context.raw || '';
+              const value = context.raw || '0';
               return `${label}: ${value} months`;
             }
           }
@@ -88,12 +88,15 @@ export class TimelinesGraphicComponent {
           }
         },
         y: {
+          ticks: {
+            display: false,
+          },
           stacked: true,
           grid: {
             drawBorder: false
           }
         },
-        beginAtZero: true
+        // beginAtZero: true
       }
     };
   }

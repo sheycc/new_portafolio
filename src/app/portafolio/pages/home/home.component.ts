@@ -9,6 +9,7 @@ import {SkillsComponent} from "../../components/skills/skills.component";
 import {WorksComponent} from "../../components/works/works.component";
 import {ContactComponent} from "../../components/contact/contact.component";
 import {MessageService} from "primeng/api";
+import {ImagesService} from "../../../shared/services/images.service";
 
 @Component({
   selector: 'app-home',
@@ -29,12 +30,16 @@ import {MessageService} from "primeng/api";
 })
 export class HomeComponent implements OnInit{
 
+  image: string = '';
+
   constructor(private resumeService: ResumeService,
               private renderer: Renderer2,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private imagesService: ImagesService) { }
 
   ngOnInit(): void {
     this.setupSmoothScrolling();
+    this.loadImage();
   }
 
   setupSmoothScrolling(): void {
@@ -56,6 +61,18 @@ export class HomeComponent implements OnInit{
         }
       });
     });
+  }
+
+  async loadImage(): Promise<void> {
+    try {
+      this.image = await this.imagesService.getHomeImage();
+    } catch (error) {
+      this.image = 'assets/images/home.png';
+    }
+  }
+
+  getImage() {
+    return this.image;
   }
 
   async download() {

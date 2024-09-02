@@ -24,9 +24,9 @@
               <a class="button big icon solid fa-download" (click)="download()">Resume</a></li>
           </ul>
         </div>
-        <span class="image object">
-										<img src="assets/images/home5.png" alt="" />
-									</span>
+        <span class="image object" *ngIf="image">
+          <img [src]="getImage()" alt="" />
+        </span>
       </section>
 
       <!-- Section About Me-->
