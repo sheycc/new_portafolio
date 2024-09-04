@@ -4,6 +4,8 @@
       list-style: none !important;
       margin: 0 0 1em 0 !important;
       padding-left: 0 !important;
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }

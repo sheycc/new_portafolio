@@ -8,7 +8,8 @@
     border-radius: 0.5em;
     display: flex;
     align-items: center;
-    gap: 0.8em;
+    gap: 1em;
+    font-family: "Roboto Slab", serif;
     button {
       color: #208120 !important;
       box-shadow: none !important;
@@ -19,11 +20,13 @@
       height: 3em;
       width: 3em; }
     button.p-link:hover,
-    button.p-link:active{
+    button.p-link:active,
+    button.p-link:focus{
       background-color: transparent; }}
   .p-toast-summary {
     color: #208120;
-    font-size: medium; }
+    font-size: medium;
+    font-weight: 600; }
   .p-toast-detail {
     font-size: small; }
   .p-toast-message-icon {

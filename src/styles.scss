@@ -1378,9 +1378,8 @@ ul.contact li {
   margin: 1.5em 0 0 0;
   padding: 1.5em 0 0 3em;
   position: relative; }
-ul.contact li:hover{
-  cursor: pointer;
-}
+ul.contact li:hover {
+  cursor: pointer; }
 ul.contact li:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -1412,9 +1411,6 @@ ul.contact li:first-child:before {
 ul.contact li a {
   color: inherit; }
 
-/* Pagination */
-
-/* Table */
 
 /* Button */
 input[type="submit"],
@@ -1762,7 +1758,6 @@ button:disabled,
   align-items: center;
   border-radius: 0.375em;
   box-shadow: inset 0 0 0 2px #f56a6a;
-  //height: 2.5em;
   padding: 1.25em;
   margin: 0.5em;
   background-color: rgba(245, 106, 106, 0.15);

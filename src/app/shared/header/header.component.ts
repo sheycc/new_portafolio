@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {AuthService} from "../../auth/services/auth.service";
-import {NgIf} from "@angular/common";
+import { RouterLink } from "@angular/router";
+import { NgIf } from "@angular/common";
+
+import { AuthService } from "../../auth/services/auth.service";
+import { PrimengModule } from "../../primeng/primeng.module";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
+    PrimengModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

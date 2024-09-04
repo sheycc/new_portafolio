@@ -10,6 +10,7 @@ import { KnobModule } from 'primeng/knob';
 import { TabViewModule } from 'primeng/tabview';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ChartModule } from 'primeng/chart';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import { ChartModule } from 'primeng/chart';
     KnobModule,
     TabViewModule,
     ConfirmPopupModule,
-    ChartModule
+    ChartModule,
+    TooltipModule
   ],
   exports: [
     MessagesModule,
@@ -35,7 +37,8 @@ import { ChartModule } from 'primeng/chart';
     KnobModule,
     TabViewModule,
     ConfirmPopupModule,
-    ChartModule
+    ChartModule,
+    TooltipModule
   ]
 })
 export class PrimengModule { }
