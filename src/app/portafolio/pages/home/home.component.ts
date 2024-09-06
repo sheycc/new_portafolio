@@ -1,15 +1,17 @@
-import {Component, inject, NgZone, OnInit, Renderer2} from '@angular/core';
+import { Component,OnInit, Renderer2 } from '@angular/core';
+
+import { MessageService } from "primeng/api";
+
+import { PrimengModule } from "../../../primeng/primeng.module";
+import { AboutMeComponent } from "../../components/about-me/about-me.component";
+import { SkillsComponent } from "../../components/skills/skills.component";
+import { WorksComponent } from "../../components/works/works.component";
+import { ContactComponent } from "../../components/contact/contact.component";
 import { HeaderComponent } from "../../../shared/header/header.component";
 import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 import { FooterComponent } from "../../../shared/footer/footer.component";
 import { ResumeService } from "../../../shared/services/resume.service";
-import { PrimengModule } from "../../../primeng/primeng.module";
-import {AboutMeComponent} from "../../components/about-me/about-me.component";
-import {SkillsComponent} from "../../components/skills/skills.component";
-import {WorksComponent} from "../../components/works/works.component";
-import {ContactComponent} from "../../components/contact/contact.component";
-import {MessageService} from "primeng/api";
-import {ImagesService} from "../../../shared/services/images.service";
+import { ImagesService } from "../../../shared/services/images.service";
 
 @Component({
   selector: 'app-home',
@@ -42,6 +44,18 @@ export class HomeComponent implements OnInit{
     this.loadImage();
   }
 
+  getImage() {
+    return this.image;
+  }
+
+  async loadImage(): Promise<void> {
+    try {
+      this.image = await this.imagesService.getHomeImage();
+    } catch (error) {
+      this.image = 'assets/images/home.png';
+    }
+  }
+
   setupSmoothScrolling(): void {
     const menu = this.renderer.selectRootElement('#menu', true);
     const links = Array.from(menu.querySelectorAll('a')) as HTMLAnchorElement[];
@@ -61,18 +75,6 @@ export class HomeComponent implements OnInit{
         }
       });
     });
-  }
-
-  async loadImage(): Promise<void> {
-    try {
-      this.image = await this.imagesService.getHomeImage();
-    } catch (error) {
-      this.image = 'assets/images/home.png';
-    }
-  }
-
-  getImage() {
-    return this.image;
   }
 
   async download() {

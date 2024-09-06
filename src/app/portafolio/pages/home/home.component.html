@@ -21,11 +21,11 @@
           <p-toast key="resume"/>
           <ul class="actions">
             <li>
-              <a class="button big icon solid fa-download" (click)="download()">Resume</a></li>
+              <a role="button" aria-label="Download CV" class="button big icon solid fa-download" (click)="download()">Resume</a></li>
           </ul>
         </div>
         <span class="image object" *ngIf="image">
-          <img [src]="getImage()" alt="" />
+          <img [src]="getImage()" alt="Representative image of software development with teams collaborating on a laptop" />
         </span>
       </section>
 

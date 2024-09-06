@@ -3,7 +3,16 @@
 </header>
 <p>This is my professional email, phone number, and personal address. Please feel free to reach out to me anytime.</p>
 <ul class="contact">
-  <li class="icon solid fa-envelope" (click)="copyToClipboard('sheycruzcastro@gmail.com')">sheycruzcastro&#64;gmail.com</li>
-  <li class="icon solid fa-phone" (click)="copyToClipboard('(+34) 613390997')">(+34) 613390997</li>
-  <li class="icon solid fa-home" (click)="copyToClipboard('Garcia Barbon - 36201 Vigo, Spain')">Garcia Barbon - 36201 Vigo, Spain</li>
+  <!-- Correo electrónico -->
+  <li role="button" tabindex="0" class="icon solid fa-envelope" aria-label="Copiar correo electrónico sheycruzcastro@gmail.com"
+      (click)="copyToClipboard('sheycruzcastro@gmail.com')"
+      (keydown.enter)="copyToClipboard('sheycruzcastro@gmail.com')">sheycruzcastro&#64;gmail.com</li>
+  <!-- Teléfono -->
+  <li role="button" tabindex="0" class="icon solid fa-phone" aria-label="Copiar número de teléfono (+34) 613390997"
+      (click)="copyToClipboard('(+34) 613390997')"
+      (keydown.enter)="copyToClipboard('(+34) 613390997')">(+34) 613390997</li>
+  <!-- Dirección -->
+  <li role="button" tabindex="0" class="icon solid fa-home" aria-label="Copiar dirección Garcia Barbon - 36201 Vigo, Spain"
+      (click)="copyToClipboard('Garcia Barbon - 36201 Vigo, Spain')"
+      (keydown.enter)="copyToClipboard('Garcia Barbon - 36201 Vigo, Spain')">Garcia Barbon - 36201 Vigo, Spain</li>
 </ul>

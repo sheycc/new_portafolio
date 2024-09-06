@@ -1,14 +1,12 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
-import { PrimengModule } from "../../../primeng/primeng.module";
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import {Observable} from "rxjs";
-import {Skill} from "../../../shared/interfaces/skill";
-import {Subskill} from "../../../shared/interfaces/subskill";
-import {SkillsService} from "../../../shared/services/skills.service";
-import {SubskillsService} from "../../../shared/services/subskills.service";
-import {response} from "express";
+import { Observable } from "rxjs";
 
-
+import { PrimengModule } from "../../../primeng/primeng.module";
+import { Skill } from "../../../shared/interfaces/skill";
+import { Subskill } from "../../../shared/interfaces/subskill";
+import { SkillsService } from "../../../shared/services/skills.service";
+import { SubskillsService } from "../../../shared/services/subskills.service";
 
 @Component({
   selector: 'app-skills',
