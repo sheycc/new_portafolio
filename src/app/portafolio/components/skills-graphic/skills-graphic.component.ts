@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Skill } from "../../../shared/interfaces/skill";
 import { SkillsService } from "../../../shared/services/skills.service";

@@ -1,5 +1,7 @@
 
-<div *ngIf="data">
-  <p-chart type="polarArea" [data]="data" [options]="options"/>
-  <h5 class="h5__graphic-name">Work's Skills</h5>
+<div *ngIf="data" role="region" aria-labelledby="chartTitle">
+  <p-chart type="polarArea" [data]="data" [options]="options"
+           aria-label="Polar Area Chart showing work skills distribution"
+           role="img"/>
+  <h5 class="graphic-name" id="chartTitle">Work's Skills</h5>
 </div>

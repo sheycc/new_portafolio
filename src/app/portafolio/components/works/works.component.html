@@ -2,16 +2,17 @@
 <header class="major">
   <h2>Works</h2>
 </header>
-<div class="posts" *ngIf="projects">
-  <article *ngFor="let project of projects">
+<div class="posts" *ngIf="projects" role="region">
+  <article *ngFor="let project of projects" role="listitem"  [attr.aria-labelledby]="'project-' + project.uid">
     <div class="image-container">
       <p-galleria
         [value]="getImages(project.uid!)"
         [showIndicators]="true"
-        [showThumbnails]="false">
+        [showThumbnails]="false"
+        [attr.aria-label]="'Gallery of images for ' + project.name">
         <ng-template pTemplate="item" let-item let-i="index">
           <div class="image-overlay" [ngClass]="{'first-item': i === 0}">
-            <img [src]="item" alt="" />
+            <img [src]="item" alt="Image of {{project.name}}" />
             <div class="top-text-overlay">
               {{project.tech}}
             </div>
@@ -19,7 +20,7 @@
         </ng-template>
       </p-galleria>
     </div>
-    <h3>{{project.name}}</h3>
+    <h3 [id]="'project-' + project.uid">{{project.name}}</h3>
     <p>{{project.description}}</p>
   </article>
 </div>

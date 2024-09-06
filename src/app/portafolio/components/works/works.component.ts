@@ -21,7 +21,6 @@ export class WorksComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private imagesService: ImagesService) {}
 
-
   ngOnInit() {
     // Obtener todos los proyectos y las imagenes de cada uno
     this.projectsService.getAllProjects().subscribe(projects => {

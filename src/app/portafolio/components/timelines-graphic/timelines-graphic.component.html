@@ -1,4 +1,6 @@
 
-<div *ngIf="data">
-  <p-chart type="line" [data]="data" [options]="options" />
+<div *ngIf="data" role="region">
+  <p-chart type="line" [data]="data" [options]="options"
+           aria-label="Line Time Chart showing work time distribution"
+           role="img"/>
 </div>

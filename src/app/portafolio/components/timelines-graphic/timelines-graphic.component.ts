@@ -95,8 +95,7 @@ export class TimelinesGraphicComponent {
           grid: {
             drawBorder: false
           }
-        },
-        // beginAtZero: true
+        }
       }
     };
   }
