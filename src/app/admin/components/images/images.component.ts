@@ -1,10 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {ImagesService} from "../../../shared/services/images.service";
-import {NgIf} from "@angular/common";
-import {GalleriaModule} from "primeng/galleria";
-import {PrimeTemplate} from "primeng/api";
-import {response} from "express";
-import {Observable} from "rxjs";
+import { Component, Input } from '@angular/core';
+import { NgIf } from "@angular/common";
+
+import { GalleriaModule } from "primeng/galleria";
+import { PrimeTemplate } from "primeng/api";
+import { ImagesService } from "../../../shared/services/images.service";
 
 @Component({
   selector: 'app-images',

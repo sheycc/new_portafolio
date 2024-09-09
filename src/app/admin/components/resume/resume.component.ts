@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
 import { NgIf } from "@angular/common";
-import { finalize } from "rxjs";
-
-import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { ResumeService } from "../../../shared/services/resume.service";
-import {PaginatorModule} from "primeng/paginator";
-import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-resume',
   standalone: true,
   imports: [
     NgIf,
-    PaginatorModule,
     ReactiveFormsModule
   ],
   templateUrl: './resume.component.html',

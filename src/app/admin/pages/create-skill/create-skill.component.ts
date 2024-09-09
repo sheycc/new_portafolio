@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import {getErrorMsg, invalidField} from "../../../shared/utils";
-import {NgIf} from "@angular/common";
-import {PaginatorModule} from "primeng/paginator";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {SharedModule} from "../../../shared/shared.module";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SkillsService} from "../../../shared/services/skills.service";
-import {Skill} from "../../../shared/interfaces/skill";
-import {switchMap} from "rxjs";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { NgIf } from "@angular/common";
+import { switchMap } from "rxjs";
+
+import { PaginatorModule } from "primeng/paginator";
+import { SharedModule } from "../../../shared/shared.module";
+import { SkillsService } from "../../../shared/services/skills.service";
+import { Skill } from "../../../shared/interfaces/skill";
 import { PrimengModule } from "../../../primeng/primeng.module";
+import { getErrorMsg, invalidField } from "../../../shared/utils";
 
 @Component({
   selector: 'app-create-skill',
@@ -81,7 +82,6 @@ export class CreateSkillComponent {
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';
-              // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
             }
           });
       } else {
@@ -95,12 +95,9 @@ export class CreateSkillComponent {
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';
-              // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
             }
           });
       }
-
-
     }
   }
 

@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {getErrorMsg, invalidField} from "../../../shared/utils";
-import {NgIf} from "@angular/common";
-import {PaginatorModule} from "primeng/paginator";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {SharedModule} from "../../../shared/shared.module";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ProjectsService} from "../../../shared/services/projects.service";
-import {Project} from "../../../shared/interfaces/project";
-import {switchMap} from "rxjs";
-import {KnobModule} from "primeng/knob";
-import {ImagesComponent} from "../../components/images/images.component";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { NgIf } from "@angular/common";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { switchMap } from "rxjs";
+
+import { PaginatorModule } from "primeng/paginator";
+import { KnobModule } from "primeng/knob";
+
+import { getErrorMsg, invalidField } from "../../../shared/utils";
+import { SharedModule } from "../../../shared/shared.module";
+import { ProjectsService } from "../../../shared/services/projects.service";
+import { Project } from "../../../shared/interfaces/project";
+import { ImagesComponent } from "../../components/images/images.component";
 
 @Component({
   selector: 'app-create-project',
@@ -82,7 +84,6 @@ export class CreateProjectComponent implements OnInit{
           } else{
             this.invalid = true;
             this.errorMsg = 'Something went wrong! Try again.';
-            // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
           }
         });
     }
@@ -102,7 +103,6 @@ export class CreateProjectComponent implements OnInit{
           } else{
             this.invalid = true;
             this.errorMsg = 'Something went wrong! Try again.';
-            // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
           }
         });
     }

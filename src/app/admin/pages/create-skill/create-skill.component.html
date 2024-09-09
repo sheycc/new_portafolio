@@ -2,7 +2,6 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <h3>{{ skill.uid ? 'Update ' : 'New '}} Skill</h3>
 
-
   <div class="row gtr-200">
     <div class="col-6 col-12-medium">
       <div class="row gtr-uniform">
@@ -48,6 +47,4 @@
       <a class="icon close-icon" (click)="closeErrorMsg()"><i class="fa-solid fa-circle-xmark"></i></a>
     </div>
   </div>
-
-
 </form>

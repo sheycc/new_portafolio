@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {AsyncPipe, NgForOf} from "@angular/common";
-import {ResumeComponent} from "../../components/resume/resume.component";
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {Observable} from "rxjs";
-import {Project} from "../../../shared/interfaces/project";
-import {Skill} from "../../../shared/interfaces/skill";
-import {Subskill} from "../../../shared/interfaces/subskill";
-import {ProjectsService} from "../../../shared/services/projects.service";
-import {SkillsService} from "../../../shared/services/skills.service";
-import {SubskillsService} from "../../../shared/services/subskills.service";
-import {PrimengModule} from "../../../primeng/primeng.module";
+import { Component, OnInit } from '@angular/core';
+import { AsyncPipe, NgForOf } from "@angular/common";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { Observable } from "rxjs";
+
+import { Skill } from "../../../shared/interfaces/skill";
+import { Subskill } from "../../../shared/interfaces/subskill";
+import { SkillsService } from "../../../shared/services/skills.service";
+import { SubskillsService } from "../../../shared/services/subskills.service";
+import { PrimengModule } from "../../../primeng/primeng.module";
 
 @Component({
   selector: 'app-skills-subskills',
@@ -30,8 +28,7 @@ export class SkillsSubskillsComponent implements OnInit{
   subskills: { [key: string]: Subskill[] } = {};
 
   constructor(private skillsService: SkillsService,
-              private subskillService: SubskillsService) {
-  }
+              private subskillService: SubskillsService) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -55,11 +52,9 @@ export class SkillsSubskillsComponent implements OnInit{
 
   toggleMenu(event: Event) {
     const opener = event.target as HTMLElement;
-
     if (opener.classList.contains('opener')) {
       opener.classList.toggle('active');
       const submenu = opener.nextElementSibling as HTMLElement;
-
       if (submenu.style.display === 'block') {
         submenu.style.display = 'none';
       } else {

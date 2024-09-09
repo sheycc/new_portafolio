@@ -1,14 +1,15 @@
-import {Component, inject, NgZone, OnInit, ViewChild} from '@angular/core';
-import {AsyncPipe, NgForOf} from "@angular/common";
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {Observable} from "rxjs";
-import {Project} from "../../../shared/interfaces/project";
-import {ProjectsService} from "../../../shared/services/projects.service";
-import {ResumeComponent} from "../../components/resume/resume.component";
-import {PrimengModule} from "../../../primeng/primeng.module";
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AsyncPipe, NgForOf } from "@angular/common";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { Observable } from "rxjs";
+
+import { MessageService } from 'primeng/api';
 import { ConfirmPopup } from 'primeng/confirmpopup';
 import { ButtonModule } from 'primeng/button';
+import { PrimengModule } from "../../../primeng/primeng.module";
+import { Project } from "../../../shared/interfaces/project";
+import { ProjectsService } from "../../../shared/services/projects.service";
+import { ResumeComponent } from "../../components/resume/resume.component";
 
 @Component({
   selector: 'app-projects',

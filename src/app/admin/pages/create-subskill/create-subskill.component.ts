@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import {getErrorMsg, invalidField} from "../../../shared/utils";
-import {NgIf} from "@angular/common";
-import {PaginatorModule} from "primeng/paginator";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {SharedModule} from "../../../shared/shared.module";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SubskillsService} from "../../../shared/services/subskills.service";
-import {Subskill} from "../../../shared/interfaces/subskill";
-import {switchMap} from "rxjs";
-import {map} from "rxjs/operators";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { NgIf } from "@angular/common";
+import { switchMap } from "rxjs";
+
+import { PaginatorModule } from "primeng/paginator";
+import { SharedModule } from "../../../shared/shared.module";
+import { SubskillsService } from "../../../shared/services/subskills.service";
+import { Subskill } from "../../../shared/interfaces/subskill";
+import { getErrorMsg, invalidField } from "../../../shared/utils";
 
 @Component({
   selector: 'app-create-subskill',
@@ -64,7 +64,6 @@ export class CreateSubskillComponent {
   }
 
   onSubmit() {
-
     if(this.myForm.valid){
       this.subskill.name = this.myForm.get('name')?.value;
       if(this.subskill.uid) {
@@ -78,7 +77,6 @@ export class CreateSubskillComponent {
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';
-              // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
             }
           });
       } else {
@@ -92,7 +90,6 @@ export class CreateSubskillComponent {
             } else{
               this.invalid = true;
               this.errorMsg = 'Something went wrong! Try again.';
-              // this.message = [{ severity: 'contrast', detail: 'Something went wrong! Try again.' }];
             }
           });
       }
