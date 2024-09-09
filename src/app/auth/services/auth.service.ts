@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth";
 import { doc, getDoc, getFirestore, setDoc } from "@angular/fire/firestore";
 
 import { User } from "../interfaces/user";
+import { environment } from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +30,10 @@ export class AuthService {
   }
 
   createTestingUser() {
+    let _tester = environment.user_tester;
     this.register({
-      email: 'test@test.com',
-      password: 'password'
+      email: _tester.email,
+      password: _tester.password
     }).subscribe();
   }
 

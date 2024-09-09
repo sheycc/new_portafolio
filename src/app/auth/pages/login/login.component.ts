@@ -1,13 +1,12 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { NgIf } from "@angular/common";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 
 import { AuthService } from "../../services/auth.service";
 import { SharedModule } from "../../../shared/shared.module";
 import { getErrorMsg, invalidField } from "../../../shared/utils";
-import {NgIf} from "@angular/common";
 import { PrimengModule } from "../../../primeng/primeng.module";
-import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
