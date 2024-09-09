@@ -65,7 +65,6 @@ export class ResumeService {
       document.body.removeChild(anchor);
 
       window.URL.revokeObjectURL(blobUrl);
-      console.log('Archivo descargado exitosamente.');
     } catch (error) {
       console.error('Error descargando el archivo:', error);
     }

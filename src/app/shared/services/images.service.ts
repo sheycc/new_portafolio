@@ -21,11 +21,11 @@ export class ImagesService {
         finalize(() => {
           fileRef.getDownloadURL().subscribe(
             (url) => {
-              resolve(url);  // Resuelve la promesa cuando la carga termina
+              resolve(url);
             },
             (error) => {
               console.error('Error getting download URL:', error);
-              reject(error);  // Rechaza la promesa si ocurre un error
+              reject(error);
             }
           );
         })

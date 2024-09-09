@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[errorMsg]'
@@ -25,6 +25,7 @@ export class ErrorMsgDirective implements OnInit{
     this.color = this._color;
     this.msg = this._msg;
   }
+
   setColor(): void {
     this.htmlElement.nativeElement.style.color = this._color;
   }
@@ -32,6 +33,5 @@ export class ErrorMsgDirective implements OnInit{
   setMsg(): void {
     this.htmlElement.nativeElement.textContent = this._msg; //or innerHTML
   }
-
 
 }

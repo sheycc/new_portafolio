@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
 import { from, Observable, of } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 
@@ -18,12 +18,11 @@ export class ProjectsService {
 
   getAllProjects(): Observable<Project[]> {
     return this.projectsCollection.valueChanges().pipe(
-      catchError((error) => {
-        return of([]); // Retorna un array vacío en caso de error
+      catchError((_) => {
+        return of([]);
       })
     );
   }
-
 
   getProjectById(uid: string): Observable<Project | undefined> {
     return this.projectsCollection.valueChanges()
@@ -43,7 +42,7 @@ export class ProjectsService {
 
     return from(this.projectsCollection.doc(projectId).set(_project)).pipe(
       map(() => _project),
-      catchError((error) => {
+      catchError((_) => {
         return of(null);
       })
     );
@@ -61,7 +60,7 @@ export class ProjectsService {
         ...projectRequest,
         ..._project
       })),
-      catchError((error) => {
+      catchError((_) => {
         return of(null);
       })
     );

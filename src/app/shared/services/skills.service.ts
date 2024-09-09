@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { catchError, map } from "rxjs/operators";
-import {forkJoin, from, Observable, of, switchMap} from "rxjs";
-
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+import { catchError, map } from "rxjs/operators";
+import { from, Observable, of } from "rxjs";
 
 import { Skill } from "../interfaces/skill";
-import {Subskill} from "../interfaces/subskill";
-import {SubskillsService} from "./subskills.service";
+import { Subskill } from "../interfaces/subskill";
+import { SubskillsService } from "./subskills.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,6 @@ export class SkillsService {
   private readonly skillsCollection!: AngularFirestoreCollection<Skill>;
   private readonly subskillsCollection!: AngularFirestoreCollection<Subskill>;
 
-  // public skills: Skill[] = [];
-
   constructor(private afs: AngularFirestore, private subskillsService: SubskillsService) {
     this.skillsCollection = this.afs.collection<Skill>('skills');
     this.subskillsCollection = this.afs.collection<Subskill>('subskills');
@@ -25,16 +22,15 @@ export class SkillsService {
 
   getAllSkills(): Observable<Skill[]> {
     return this.skillsCollection.valueChanges().pipe(
-      catchError((error) => {
-        return of([]); // Retorna un array vacío en caso de error
+      catchError((_) => {
+        return of([]);
       })
     );
   }
 
-
   getSkillById(uid: string): Observable<Skill | undefined> {
     return this.skillsCollection.doc<Skill>(uid).valueChanges().pipe(
-      catchError((error) => {
+      catchError((_) => {
         return of(undefined);
       })
     );
@@ -51,7 +47,7 @@ export class SkillsService {
 
     return from(this.skillsCollection.doc(skillId).set(_skill)).pipe(
       map(() => _skill),
-      catchError((error) => {
+      catchError((_) => {
         return of(null);
       })
     );
@@ -69,7 +65,7 @@ export class SkillsService {
         ...skillRequest,
         ..._skill
       })),
-      catchError((error) => {
+      catchError((_) => {
         return of(null);
       })
     );
@@ -91,7 +87,6 @@ export class SkillsService {
         throw error;
       })
     );
-
   }
 
 }

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import {catchError, map, switchMap, tap} from "rxjs/operators";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+import { catchError, map } from "rxjs/operators";
 import { from, Observable, of } from "rxjs";
 
-import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
-
 import { Subskill } from "../interfaces/subskill";
-import {response} from "express";
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +12,17 @@ export class SubskillsService {
 
   private readonly subskillsCollection!: AngularFirestoreCollection<Subskill>;
 
-
   constructor(private afs: AngularFirestore) {
     this.subskillsCollection = this.afs.collection<Subskill>('subskills');
   }
 
   getAllSubskills(): Observable<Subskill[]> {
     return this.subskillsCollection.valueChanges().pipe(
-      catchError((error) => {
-        return of([]); // Retorna un array vacío en caso de error
+      catchError((_) => {
+        return of([]);
       })
     );
   }
-
 
   getAllSubskillsBySkill(skill_uid: string): Observable<Subskill[]> {
     return this.afs.collection<Subskill>('subskills', ref => ref.where('skill_uid', '==', skill_uid))
@@ -38,23 +34,6 @@ export class SubskillsService {
       );
   }
 
-  // getSubskillsDictionary(): { [key: string]: Subskill[] } {
-  //   let _subskills: { [key: string]: Subskill[] } = {};
-  //   let i = 0;
-  //   let j = 0;
-  //   this.getAllSubskills().subscribe(subskills => {
-  //     subskills.forEach(subskill => {
-  //       i++;
-  //       if (!_subskills[subskill.skill_uid]) {
-  //         _subskills[subskill.skill_uid] = [];
-  //         j++;
-  //       }
-  //       _subskills[subskill.skill_uid].push(subskill);
-  //       console.log('i,j,subskilldict,subskill[]',i,j,_subskills,_subskills[subskill.skill_uid].values())
-  //     });
-  //   });
-  //   return _subskills;
-  // }
   getSubskillsDictionary(): Observable<{ [key: string]: Subskill[] }> {
     return this.getAllSubskills().pipe(
       map(subskills => {
@@ -76,12 +55,11 @@ export class SubskillsService {
 
   getSubskillById(uid: string): Observable<Subskill | undefined> {
     return this.subskillsCollection.doc<Subskill>(uid).valueChanges().pipe(
-      catchError((error) => {
+      catchError((_) => {
         return of(undefined);
       })
     );
   }
-
 
   createSubskill(subskillRequest: Subskill): Observable<Subskill | null> {
     const _subskillId = this.afs.createId();
@@ -108,7 +86,7 @@ export class SubskillsService {
         ...subskillRequest,
         ..._skill
       })),
-      catchError((error) => {
+      catchError((_) => {
         return of(null);
       })
     );
